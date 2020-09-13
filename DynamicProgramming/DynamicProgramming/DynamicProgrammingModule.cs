@@ -8,6 +8,60 @@ namespace DynamicProgramming
 {
     public static class DynamicProgrammingModule
     {
+        public static int LongestCommonSubsequence(string str1, string str2)
+        {
+            int m = str1.Length, n = str2.Length;
+
+            int[,] T = new int[m + 1, n + 1];
+
+
+            for (int i = 1; i <= m; i++)
+            {
+                for (int j = 1; j <= n; j++)
+                {
+                    if (str1[i - 1] == str2[j - 1])
+                    {
+                        T[i, j] = T[i - 1, j - 1] + 1;
+                    }
+                    else
+                    {
+                        T[i, j] = Math.Max(T[i - 1, j], T[i, j - 1]);
+                    }
+                }
+            }
+            
+            return T[m, n];
+        }
+
+        public static string LongestCommonSubstring(string str1, string str2)
+        {
+            int m = str1.Length, n = str2.Length;
+            int maxlen = 0;
+            int endingIndex = m;
+
+            int[,] T = new int[m + 1, n + 1];
+
+
+            for (int i = 1; i <= m; i++)
+            {
+                for (int j = 1; j <= n; j++)
+                {
+                    if (str1[i - 1] == str2[j - 1])
+                    {
+                        T[i, j] = T[i - 1, j - 1] + 1;
+
+                        if (T[i, j] > maxlen)
+                        {
+                            maxlen = T[i,j];
+                            endingIndex = i;
+                        }
+                    }
+                }
+            }
+
+            return str1.Substring(endingIndex - maxlen, endingIndex); ;
+        }
+
         public static void LongestIncreasingSubsequence(int[] arr)
         {
             IList<IList<int>> LIS = new List<IList<int>>();

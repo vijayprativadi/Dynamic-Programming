@@ -13,7 +13,9 @@ namespace DynamicProgramming
             //08/29
             //LCS
             //Longest Common Substring
-
+            String str1 = "ABCBDAB", str2 = "BDCABA";
+            Console.WriteLine("Length of Longest Common Subsequence is: " + DynamicProgrammingModule.LongestCommonSubsequence(str1, str2));
+            Console.WriteLine("Length of Longest Common Substring is: " + DynamicProgrammingModule.LongestCommonSubstring(str1, str2));
 
 
             //08/30
